@@ -367,7 +367,7 @@ public class AQUtility {
 
 	}
 
-	private static String getMD5Hex(String str) {
+	public static String getMD5Hex(String str) {
 		byte[] data = getMD5(str.getBytes());
 
 		BigInteger bi = new BigInteger(data).abs();
@@ -376,7 +376,7 @@ public class AQUtility {
 		return result;
 	}
 
-	private static byte[] getMD5(byte[] data) {
+	public static byte[] getMD5(byte[] data) {
 
 		MessageDigest digest;
 		try {
