@@ -58,7 +58,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
+import android.widget.Checkable;
 import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -978,8 +978,8 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 	 */
 	public T checked(boolean checked){
 		
-		if(view instanceof CompoundButton){
-			CompoundButton cb = (CompoundButton) view;
+		if(view instanceof Checkable){
+			Checkable cb = (Checkable) view;
 			cb.setChecked(checked);
 		}
 		
@@ -995,8 +995,8 @@ public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Con
 		
 		boolean checked = false;
 		
-		if(view instanceof CompoundButton){
-			CompoundButton cb = (CompoundButton) view;
+		if(view instanceof Checkable){
+			Checkable cb = (Checkable) view;
 			checked = cb.isChecked();
 		}
 		
