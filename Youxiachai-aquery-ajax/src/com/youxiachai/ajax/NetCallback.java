@@ -18,16 +18,7 @@ public class NetCallback<T> extends AjaxCallback<T> {
 		setExpire(cbOption.expire);
 	}
 	
-	public NetCallback(Class<T> dataType, NetOption cbOption){
-		this.type(dataType);
-		this.url(cbOption.url);
-	
-		
-		if(cbOption.callbackType != null){
-			this.callBackType = cbOption.callbackType;
-		}
-		setExpire(cbOption.expire);
-	}
+
 	
 	private void setExpire(long cacheTime){
 		this.fileCache = true;

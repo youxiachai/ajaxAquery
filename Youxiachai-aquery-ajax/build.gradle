@@ -3,13 +3,10 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.4.2'
+        classpath 'com.android.tools.build:gradle:0.4'
     }
 }
-
-
 apply plugin: 'android-library'
-
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
@@ -32,8 +29,4 @@ android {
 
         instrumentTest.setRoot('tests')
     }
-}
-
-tasks.withType(Compile) {
-	options.encoding = 'UTF-8'
 }

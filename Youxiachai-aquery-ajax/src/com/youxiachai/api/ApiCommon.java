@@ -7,15 +7,33 @@ import org.apache.http.protocol.HTTP;
 
 import android.os.Bundle;
 
+/**
+ * @author youxiachai
+ * @date   2013-6-18
+ */
 public class ApiCommon {
 	private static String apiHost = "";
+	private final static String URLHEADER = "http://";
 
+	/**get host string
+	 * @return
+	 */
 	public static String getApiHost() {
 		return apiHost;
 	}
 
+	/**set api host
+	 * @param hostStr
+	 */
 	public static void setApiHost(String hostStr) {
-		apiHost = hostStr;
+		if(!hostStr.contains(URLHEADER)){
+			StringBuilder sb = new StringBuilder();
+			sb.append(URLHEADER);
+			sb.append(hostStr);
+			apiHost = sb.toString();
+		}else{
+			apiHost = hostStr;
+		}
 	}
 
 	/**

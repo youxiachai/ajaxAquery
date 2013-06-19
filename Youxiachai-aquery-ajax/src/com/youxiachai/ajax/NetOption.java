@@ -8,7 +8,6 @@ public class NetOption {
 	public String url;
 	public Enum<?> callbackType;
 	public long expire = -1;
-	public ICallback<?> iCallback;
 	public NetOption(String apiPath){
 		this.url = apiPath;
 	}
