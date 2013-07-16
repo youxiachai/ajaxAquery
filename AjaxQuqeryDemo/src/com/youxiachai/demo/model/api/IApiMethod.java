@@ -1,4 +1,4 @@
-package com.youxiachai.demo.model;
+package com.youxiachai.demo.model.api;
 
 import android.os.Bundle;
 
