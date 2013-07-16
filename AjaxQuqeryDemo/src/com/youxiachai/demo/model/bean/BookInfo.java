@@ -1,4 +1,4 @@
-package com.youxiachai.demo.model;
+package com.youxiachai.demo.model.bean;
 
 import java.util.List;
 

@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.androidquery.AQuery;
 import com.youxiachai.ajax.ICallback;
-import com.youxiachai.demo.model.Collection;
+import com.youxiachai.demo.model.bean.Collection;
 
 /**
  * @author youxiachai
