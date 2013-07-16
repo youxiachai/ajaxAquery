@@ -1,4 +1,6 @@
-package com.youxiachai.demo;
+package com.youxiachai.demo.view;
+
+import com.youxiachai.demo.R;
 
 import android.os.Bundle;
 import android.app.Activity;
