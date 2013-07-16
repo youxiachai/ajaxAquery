@@ -1,4 +1,4 @@
-package com.youxiachai.demo.view;
+package com.youxiachai.demo.view.act;
 
 import com.youxiachai.demo.R;
 
