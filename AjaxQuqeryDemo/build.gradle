@@ -16,6 +16,32 @@ dependencies {
 android {
     compileSdkVersion 17
     buildToolsVersion "17.0.0"
+	
+	signingConfigs {
+		myConfig{
+			storeFile file("gradle.keystore")
+			storePassword "gradle"
+			keyAlias "gradle"
+			keyPassword "gradle"
+		}
+	}
+	
+	buildTypes{
+		release { 
+			signingConfig signingConfigs.myConfig
+			runProguard true
+			proguardFile 'proguard-project.txt'
+		}
+	}
+	
+	productFlavors {
+		normal {
+			
+		}
+		playstore {
+			packageName='com.youxiachai.demo.playstore'
+		}
+	}
 
     sourceSets {
         main {
