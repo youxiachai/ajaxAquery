@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.androidquery.AQuery;
 import com.youxiachai.ajax.ICallback;
+import com.youxiachai.api.IApiMethod;
 
 /**
  * @author youxiachai

@@ -13,9 +13,11 @@ import android.os.Bundle;
  */
 public class ApiCommon {
 	private static String apiHost = "";
-	private final static String URLHEADER = "http://";
+	private final static String HTTPHEAD = "http://";
+	private final static String HTTPS = "https://";
 
-	/**get host string
+	/**get host st
+	 * ring
 	 * @return
 	 */
 	public static String getApiHost() {
@@ -26,9 +28,9 @@ public class ApiCommon {
 	 * @param hostStr
 	 */
 	public static void setApiHost(String hostStr) {
-		if(!hostStr.contains(URLHEADER)){
+		if(!hostStr.contains(HTTPHEAD)|| !hostStr.contains(HTTPS)){
 			StringBuilder sb = new StringBuilder();
-			sb.append(URLHEADER);
+			sb.append(HTTPHEAD);
 			sb.append(hostStr);
 			apiHost = sb.toString();
 		}else{

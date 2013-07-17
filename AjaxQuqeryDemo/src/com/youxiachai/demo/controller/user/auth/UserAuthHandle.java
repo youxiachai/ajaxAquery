@@ -1,4 +1,4 @@
-package com.youxiachai.demo.controller.auth;
+package com.youxiachai.demo.controller.user.auth;
 
 import com.androidquery.auth.AccountHandle;
 import com.androidquery.callback.AbstractAjaxCallback;

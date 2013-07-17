@@ -2,12 +2,17 @@ package com.youxiachai.demo.test;
 
 import java.net.HttpURLConnection;
 
+import android.os.Bundle;
 import android.test.ActivityInstrumentationTestCase2;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.androidquery.util.AQUtility;
+import com.youxiachai.ajax.ICallback;
+import com.youxiachai.demo.model.api.BookApi;
+import com.youxiachai.demo.model.api.CollectionListApi;
+import com.youxiachai.demo.model.bean.BookInfo;
 import com.youxiachai.demo.view.act.MainActivity;
 
 /**
@@ -32,6 +37,9 @@ public class MainActivityTest extends
 				+ getActivity().isFinishing());
 	}
 	
+	/**
+	 * 异步请求的结束信号
+	 */
 	public void done(){
 		AQUtility.debugNotify();
 	}
@@ -42,15 +50,71 @@ public class MainActivityTest extends
 			@Override
 			public void callback(String url, String object, AjaxStatus status) {
 				super.callback(url, object, status);
+				AQUtility.debug(object);
 				assertEquals(HttpURLConnection.HTTP_OK, status.getCode());
+				
 				done();
 			}
 		});
 		AQUtility.debugWait(10000);
 	}
 	
-	public void testBookModel(){
+	public void testApiUrl () {
+		String book = "http://api.douban.com/v2/book/1220562";
+		String collections = "http://api.douban.com/v2/book/user/59438626/collections";
+		Bundle b = new Bundle();
+		b.putInt("id", 1220562);
 		
+		assertEquals(book, new BookApi().getBookById(b));
+		
+		b.putInt("id", 59438626);
+		assertEquals(collections, new CollectionListApi().getCollectionByUser(b));
+	}
+	
+	public void testBookModel(){
+		Bundle b = new Bundle();
+		b.putInt("id", 1220562);
+		new BookApi().get(b, request, new ICallback<BookInfo>() {
+			@Override
+			public void onSuccess(BookInfo result, Enum<?> type, AjaxStatus status) {
+				// TODO Auto-generated method stub
+				assertNotNull(result);
+				assertEquals("180", result.pages);
+				assertEquals("青岛出版社", result.publisher);
+				assertEquals("9787543632608", result.isbn13);
+				done();
+			}
+			
+			@Override
+			public void onError(int code, String message) {
+				// TODO Auto-generated method stub
+			}
+		});
+		
+		AQUtility.debugWait(10000);
+	}
+	
+	public void testCollections() {
+		Bundle b = new Bundle();
+		b.putInt("id", 59438626);
+		
+		new CollectionListApi().get(b, request, new ICallback<CollectionListApi>() {
+			
+			@Override
+			public void onSuccess(CollectionListApi result, Enum<?> type,
+					AjaxStatus status) {
+				assertNotNull(result);
+				done();
+			}
+			
+			@Override
+			public void onError(int code, String message) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		AQUtility.debugWait(10000);
 	}
 
 	
