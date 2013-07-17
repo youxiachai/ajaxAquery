@@ -1,6 +1,5 @@
 package com.youxiachai.demo.model.bean;
 
-import java.util.List;
 
 
 /**
