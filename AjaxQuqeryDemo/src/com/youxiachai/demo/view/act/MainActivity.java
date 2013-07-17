@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
 		
 		collectionAdapter = new CollectionsAdapter(query);
 		
-		lv.setEmptyView(query.id(android.R.id.empty).getView());
+		lv.setEmptyView(findViewById(android.R.id.empty));
 		
 		lv.setAdapter(collectionAdapter);
 		
