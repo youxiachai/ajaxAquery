@@ -19,12 +19,13 @@ import com.youxiachai.demo.model.bean.BookInfo;
  */
 public class BookApi implements IApiMethod<BookInfo>,Transformer{
 	
-	interface Path {
+	public interface Path {
+		String ID = "id";
 		String book = "/v2/book/";
 	}
 	
 	public String getBookById(Bundle query){
-		int id = query.getInt("id");
+		String id = query.getString(Path.ID);
 		return ApiCommon.getApiHost() + Path.book + id; 
 	}
 	

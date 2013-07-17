@@ -69,7 +69,7 @@ public class MainActivityTest extends
 		String book = "http://api.douban.com/v2/book/1220562";
 		String collections = "http://api.douban.com/v2/book/user/youxiachai/collections";
 		Bundle b = new Bundle();
-		b.putInt("id", 1220562);
+		b.putString("id", "1220562");
 		
 		assertEquals(book, new BookApi().getBookById(b));
 		

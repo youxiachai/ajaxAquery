@@ -27,16 +27,17 @@ public class CollectionListApi implements IApiMethod<CollectionListApi> ,Transfo
 	
 	public interface Path {
 		String START = "start";
+		String ID = "id";
 		String collection = ApiCommon.getApiHost() + "/v2/book/user/";
 	}
 	
 	public String getCollectionByUser(Bundle query){
 		
-		return  Path.collection + query.getString("id") + "/collections";
+		return  Path.collection + query.getString(Path.ID) + "/collections";
 	}
 	
 	public String getCollectionStart(Bundle query){
-		return  Path.collection + query.getString("id") + "/collections?start=" + query.getInt("start");
+		return  Path.collection + query.getString(Path.ID) + "/collections?start=" + query.getInt(Path.START);
 	}
 
 	@Override
