@@ -82,7 +82,7 @@ public class MainActivityTest extends
 	 */
 	public void testBookModel(){
 		Bundle b = new Bundle();
-		b.putInt("id", 1220562);
+		b.putString("id", "1220562");
 		new BookApi().get(b, request, new ICallback<BookInfo>() {
 			@Override
 			public void onSuccess(BookInfo result, Enum<?> type, AjaxStatus status) {
