@@ -26,12 +26,12 @@ public class CollectionListApi implements IApiMethod<CollectionListApi> ,Transfo
 	public List<Collection> collections;
 	
 	interface Path {
-		String collection = "/v2/book/user/";
+		String collection = ApiCommon.getApiHost() + "/v2/book/user/";
 	}
 	
 	public String getCollectionByUser(Bundle query){
 		
-		return ApiCommon.getApiHost() + Path.collection + query.getInt("id") + "/collections";
+		return  Path.collection + query.getInt("id") + "/collections";
 	}
 
 	@Override

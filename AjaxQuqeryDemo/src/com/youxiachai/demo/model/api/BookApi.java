@@ -35,6 +35,11 @@ public class BookApi implements IApiMethod<BookInfo>,Transformer{
 		return JSON.parseObject(new String(data), type);
 	}
 
+
+	
+	/*
+	 * 获取书籍详细信息
+	 */
 	@Override
 	public void get(Bundle queryMap, AQuery req, ICallback<BookInfo> callback) {
 		// TODO Auto-generated method stub

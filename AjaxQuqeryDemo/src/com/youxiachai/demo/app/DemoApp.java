@@ -1,8 +1,8 @@
 package com.youxiachai.demo.app;
 
-import com.youxiachai.api.ApiCommon;
-
 import android.app.Application;
+
+import com.youxiachai.api.ApiCommon;
 
 public class DemoApp extends Application {
 	

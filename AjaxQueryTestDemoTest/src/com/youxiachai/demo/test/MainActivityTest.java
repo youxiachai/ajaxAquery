@@ -44,6 +44,9 @@ public class MainActivityTest extends
 		AQUtility.debugNotify();
 	}
 
+	/**
+	 *测试网络是否通畅 
+	 */
 	public void testRequest() {
 		String url = "http://www.baidu.com";
 		request.ajax(url, String.class,  new AjaxCallback<String>(){
@@ -59,6 +62,9 @@ public class MainActivityTest extends
 		AQUtility.debugWait(10000);
 	}
 	
+	/**
+	 * 测试api url 是否正确
+	 */
 	public void testApiUrl () {
 		String book = "http://api.douban.com/v2/book/1220562";
 		String collections = "http://api.douban.com/v2/book/user/59438626/collections";
@@ -71,6 +77,9 @@ public class MainActivityTest extends
 		assertEquals(collections, new CollectionListApi().getCollectionByUser(b));
 	}
 	
+	/**
+	 * 测试获取书籍
+	 */
 	public void testBookModel(){
 		Bundle b = new Bundle();
 		b.putInt("id", 1220562);
@@ -94,11 +103,14 @@ public class MainActivityTest extends
 		AQUtility.debugWait(10000);
 	}
 	
+	/**
+	 * 测试获取收藏api
+	 */
 	public void testCollections() {
-		Bundle b = new Bundle();
-		b.putInt("id", 59438626);
+		Bundle query = new Bundle();
+		query.putInt("id", 59438626);
 		
-		new CollectionListApi().get(b, request, new ICallback<CollectionListApi>() {
+		new CollectionListApi().get(query, request, new ICallback<CollectionListApi>() {
 			
 			@Override
 			public void onSuccess(CollectionListApi result, Enum<?> type,
