@@ -67,13 +67,13 @@ public class MainActivityTest extends
 	 */
 	public void testApiUrl () {
 		String book = "http://api.douban.com/v2/book/1220562";
-		String collections = "http://api.douban.com/v2/book/user/59438626/collections";
+		String collections = "http://api.douban.com/v2/book/user/youxiachai/collections";
 		Bundle b = new Bundle();
 		b.putInt("id", 1220562);
 		
 		assertEquals(book, new BookApi().getBookById(b));
 		
-		b.putInt("id", 66863378);
+		b.putString("id", "youxiachai");
 		assertEquals(collections, new CollectionListApi().getCollectionByUser(b));
 	}
 	
@@ -108,7 +108,8 @@ public class MainActivityTest extends
 	 */
 	public void testCollections() {
 		Bundle query = new Bundle();
-		query.putInt("id", 66863378);
+//		query.("id", 66863378);
+		query.putString("id", "youxiachai");
 		
 		new CollectionListApi().get(query, request, new ICallback<CollectionListApi>() {
 			
@@ -118,7 +119,8 @@ public class MainActivityTest extends
 				assertNotNull(result);
 				assertNotNull(result.collections.get(0).book);
 				BookInfo book = result.collections.get(0).book;
-				assertEquals("http://img3.douban.com/mpic/s24425987.jpg", book.image);
+				
+				assertEquals(222, result.total);
 				done();
 			}
 			

@@ -3,6 +3,8 @@ package com.youxiachai.demo.view.act;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ListView;
 
 import com.androidquery.AQuery;
@@ -27,10 +29,22 @@ public class MainActivity extends Activity {
 		
 		lv.setAdapter(collectionAdapter);
 		
-		Bundle query = new Bundle();
-		query.putInt("id", 59438626);
+		Bundle queryParams = new Bundle();
+		queryParams.putString("id", "youxiachai");
 		//创建列表
-		collectionAdapter.post(query);
+		collectionAdapter.post(queryParams);
+		
+		query.id(android.R.id.button1).clicked(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				Bundle queryParams = new Bundle();
+				queryParams.putString("id", "youxiachai");
+				collectionAdapter.put(queryParams);
+			}
+		});
 	}
 
 	@Override

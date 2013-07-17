@@ -2,6 +2,8 @@ package com.youxiachai.demo.app;
 
 import android.app.Application;
 
+import com.androidquery.callback.AjaxCallback;
+import com.androidquery.callback.BitmapAjaxCallback;
 import com.youxiachai.api.ApiCommon;
 
 public class DemoApp extends Application {
@@ -12,8 +14,7 @@ public class DemoApp extends Application {
 		super.onCreate();
 		ApiCommon.setApiHost("api.douban.com");
 		
-//		BitmapAjaxCallback.setMaxPixelLimit(8000000);
-//		BitmapAjaxCallback.setCacheLimit(50);
-//		AjaxCallback.setNetworkLimit(8);
+		BitmapAjaxCallback.setCacheLimit(20);
+		AjaxCallback.setNetworkLimit(8);
 	}
 }

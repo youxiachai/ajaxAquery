@@ -25,19 +25,33 @@ public class CollectionListApi implements IApiMethod<CollectionListApi> ,Transfo
 	public int total;
 	public List<Collection> collections;
 	
-	interface Path {
+	public interface Path {
+		String START = "start";
 		String collection = ApiCommon.getApiHost() + "/v2/book/user/";
 	}
 	
 	public String getCollectionByUser(Bundle query){
 		
-		return  Path.collection + query.getInt("id") + "/collections";
+		return  Path.collection + query.getString("id") + "/collections";
+	}
+	
+	public String getCollectionStart(Bundle query){
+		return  Path.collection + query.getString("id") + "/collections?start=" + query.getInt("start");
 	}
 
 	@Override
 	public void get(Bundle queryMap, AQuery req,
 			ICallback<CollectionListApi> callback) {
-		NetOption no = new NetOption(getCollectionByUser(queryMap), null);
+		
+		int start = queryMap.getInt(Path.START, -1);
+		NetOption no;
+		if(start != -1){
+			no = new NetOption(getCollectionStart(queryMap), null);
+		}else {
+			no = new NetOption(getCollectionByUser(queryMap), null);
+		}
+		
+		
 		// 缓存一个小时
 		no.expire = 60 * 60 * 1000;
 		NetCallback<CollectionListApi> book = new NetCallback<CollectionListApi>(CollectionListApi.class, no, callback);

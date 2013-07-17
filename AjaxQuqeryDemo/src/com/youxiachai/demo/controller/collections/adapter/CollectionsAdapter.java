@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxStatus;
@@ -60,7 +62,7 @@ public class CollectionsAdapter extends BaseAdapter implements IAdapterMethod {
 		}
 		AQuery itemQy = query.recycle(convertView);
 		BookInfo book = collectionList.get(position).book;
-		itemQy.id(R.id.imageView1).image(book.image);
+		itemQy.id(R.id.imageView1).image(book.image, true, true);
 		return convertView;
 	}
 
@@ -73,6 +75,7 @@ public class CollectionsAdapter extends BaseAdapter implements IAdapterMethod {
 					AjaxStatus status) {
 				// TODO Auto-generated method stub
 				collectionList = result.collections;
+				total = result.total;
 				notifyDataSetInvalidated();
 			}
 
@@ -83,11 +86,38 @@ public class CollectionsAdapter extends BaseAdapter implements IAdapterMethod {
 			}
 		});
 	}
-
+	
+	static int total;
+	
+	static boolean isLoad = false;
+	/**
+	 * 获取更多
+	 */
 	@Override
-	public void put(Bundle query) {
-		// TODO Auto-generated method stub
+	public void put(Bundle queryMap) {
+		if(total > getCount() && !isLoad){
+			isLoad = true;
+			queryMap.putInt(CollectionListApi.Path.START, getCount());
+			Log.d("AQuery", "count-->" + getCount());
+			collections.get(queryMap, query, new ICallback<CollectionListApi>() {
 
+				@Override
+				public void onSuccess(CollectionListApi result, Enum<?> type,
+						AjaxStatus status) {
+					collectionList.addAll(result.collections);
+					isLoad = false;
+					notifyDataSetChanged();
+				}
+
+				@Override
+				public void onError(int code, String message) {
+					// TODO Auto-generated method stub
+
+				}
+			});
+		}else{
+			Toast.makeText(query.getContext(), "没有更多了..", Toast.LENGTH_SHORT).show();
+		}
 	}
 
 }
