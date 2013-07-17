@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 		
 		Bundle query = new Bundle();
 		query.putInt("id", 59438626);
-		
+		//创建列表
 		collectionAdapter.post(query);
 	}
 
