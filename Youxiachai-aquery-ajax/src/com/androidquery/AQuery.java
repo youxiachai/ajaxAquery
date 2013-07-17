@@ -43,6 +43,14 @@ public class AQuery extends AbstractAQuery<AQuery>{
 		super(act, root);
 	}
 	
+	public Activity getActivity(){
+		if(act != null){
+			return act;
+		}else {
+			throw new IllegalArgumentException("not activity");
+		}
+	}
+	
 
 }
 

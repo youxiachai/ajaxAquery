@@ -91,9 +91,9 @@ import com.androidquery.util.WebImage;
  */
 public abstract class AbstractAQuery<T extends AbstractAQuery<T>> implements Constants {
 
-	private View root;
-	private Activity act;
-	private Context context;
+	protected View root;
+	protected Activity act;
+	protected Context context;
 	
 	protected View view;
 	protected Object progress;

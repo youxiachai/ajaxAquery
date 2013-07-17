@@ -1,5 +1,7 @@
 package com.youxiachai.demo.model.bean;
 
+import java.util.List;
+
 
 /**
  * @author youxiachai
@@ -7,11 +9,10 @@ package com.youxiachai.demo.model.bean;
  */
 public class Collection{
 	public BookInfo book;
-	public String comment;
-	public String privacy;
 	public String status;
 	public String updated;
 	public String user_id;
 	public String book_id;
-
+	public String id;
+	public String [] tags;
 }

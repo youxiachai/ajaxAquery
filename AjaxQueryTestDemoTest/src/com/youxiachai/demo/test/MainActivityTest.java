@@ -73,7 +73,7 @@ public class MainActivityTest extends
 		
 		assertEquals(book, new BookApi().getBookById(b));
 		
-		b.putInt("id", 59438626);
+		b.putInt("id", 66863378);
 		assertEquals(collections, new CollectionListApi().getCollectionByUser(b));
 	}
 	
@@ -108,7 +108,7 @@ public class MainActivityTest extends
 	 */
 	public void testCollections() {
 		Bundle query = new Bundle();
-		query.putInt("id", 59438626);
+		query.putInt("id", 66863378);
 		
 		new CollectionListApi().get(query, request, new ICallback<CollectionListApi>() {
 			
@@ -116,6 +116,9 @@ public class MainActivityTest extends
 			public void onSuccess(CollectionListApi result, Enum<?> type,
 					AjaxStatus status) {
 				assertNotNull(result);
+				assertNotNull(result.collections.get(0).book);
+				BookInfo book = result.collections.get(0).book;
+				assertEquals("http://img3.douban.com/mpic/s24425987.jpg", book.image);
 				done();
 			}
 			
