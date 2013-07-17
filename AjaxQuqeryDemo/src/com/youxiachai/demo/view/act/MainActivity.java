@@ -38,8 +38,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				//更新列表
 				Bundle queryParams = new Bundle();
 				queryParams.putString("id", "youxiachai");
 				collectionAdapter.put(queryParams);
