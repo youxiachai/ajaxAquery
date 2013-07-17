@@ -11,5 +11,9 @@ public class DemoApp extends Application {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		ApiCommon.setApiHost("api.douban.com");
+		
+//		BitmapAjaxCallback.setMaxPixelLimit(8000000);
+//		BitmapAjaxCallback.setCacheLimit(50);
+//		AjaxCallback.setNetworkLimit(8);
 	}
 }
